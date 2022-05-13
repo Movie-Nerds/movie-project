@@ -10,42 +10,15 @@ const displayMovies = () => {
             // $('#loading').replaceWith('');
             let html = '';
             movies.forEach(movie => {
-                html += `<table class="table-striped">
-           <tr>
-           <th scope="row"><img class="poster" src="${movie.poster}" alt="a movie poster" width="45" height="67"</th>
-            <td><h5 contenteditable="true" id="edit">${movie.title}</h5></td>
-            <td>${movie.rating}</td>
-            <td><button type="button" class="delete" id="${movie.id}">Delete</button></td>
-            </tr>
-           </table>
+                html += `<div class="movie">
+                        <img class="poster" src="${movie.poster}" alt="a movie poster">
+                        <h5 contenteditable="true" id="edit">${movie.title}</h5>
+                        <h6 contenteditable="true" id="edit">Rating: ${movie.rating}</h6>
+                        <button type="button" class="delete" id="${movie.id}">Delete</button>
+                    </div>
                     <br>`
             });
-
-
             $('#movies').replaceWith(html)
-
-
-
-
-
-
-
-            // let html = '';
-            // movies.forEach(movie => {
-            //     html += `<div class="movie">
-            //             <img class="poster" src="${movie.poster}" alt="a movie poster">
-            //             <h5 contenteditable="true" id="edit">${movie.title}</h5>
-            //             <h6 contenteditable="true" id="edit">Rating: ${movie.rating}</h6>
-            //             <button type="button" class="delete" id="${movie.id}">Delete</button>
-            //         </div>
-            //         <br>`
-            // });
-            //
-            // // var table = $("#movies tbody");
-            // // $.each(data, function(idx, movie){
-            // //     table.append("<tr><td>"+movie.poster+"</td><td>"+movie.title+"</td><td>"+movie.rating+"</td><td>"+movie.id+"</td></tr>");
-            // // });
-            // $('#movies').replaceWith(html)
         })
         .catch(error => {
             console.log(error);
