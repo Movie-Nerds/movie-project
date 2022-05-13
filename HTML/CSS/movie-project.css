@@ -13,7 +13,7 @@ th {
 
 td {
     height: 70px;
-    width: 370px;
+    width: 300px;
     text-align: center;
     vertical-align: middle;
     text-transform: capitalize;
@@ -26,3 +26,27 @@ img{
 
 
 }
+
+
+form
+{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+
+/*.new-movie{*/
+/*    padding-bottom: 12px;*/
+/*    display: inline-block;*/
+/*    margin-left: auto;*/
+/*    margin-right: auto;*/
+/*    text-align: left;*/
+
+/*add-movie-head{*/
+/*    display: inline-block;*/
+/*    margin-left: auto;*/
+/*    margin-right: auto;*/
+/*    text-align: left;*/
+/*}*/

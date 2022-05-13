@@ -63,3 +63,16 @@ const displayMovies = () => {
 
             $('#movies').replaceWith(html)
         }
+
+
+
+    <tbody class="movie">
+    <tr>
+        <th scope="row"><img class="poster" src="${movie.poster}" alt="a movie poster"</th>
+        <td><h5 contenteditable="true" id="edit">${movie.title}</h5></td>
+        <td><h6 contenteditable="true" id="edit">⭐️ ${movie.rating}</h6></td>
+        <td><input class="btn btn-dark my-2 my-sm-0" type="submit" id="update" value="Save Edits"></td>
+        <td><button type="button" class="delete" id="${movie.id}">Delete</button></td>
+    </tr>
+    </tbody>
+    <br>`
