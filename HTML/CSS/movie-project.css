@@ -35,7 +35,26 @@ form
     margin-right: auto;
     text-align: left;
 }
+/*.PriceBox {*/
+/*    !*display: ;*!*/
+/*}*/
 
+/*#table-container, #header-img {*/
+/*    visibility: hidden;*/
+/*}*/
+/*.loader{*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    margin: 0 auto;*/
+/*    margin-top: 50vh;*/
+/*    letter-spacing: 3px;*/
+/*    background-color: rgba(49, 0, 139, 0.219);*/
+/*    color: white;*/
+/*    width: fit-content;*/
+/*    padding: 6px;*/
+/*    border-radius: 8px;*/
+/*    animation: loadingAnimations 1s infinite;*/
+/*}*/
 
 /*.new-movie{*/
 /*    padding-bottom: 12px;*/
