@@ -58,6 +58,56 @@ $('#add-new-movie').click(function(e) {
 
 });
 
+// *** EDIT FUNCTIONALITY ***
+$('#movies-list').html(html);
+$(document).on('click', '.edit-btn', function(e) {
+    e.preventDefault();
+    console.log("test");
+    var id = $(e.target).attr('id');
+    console.log(populateEdit(id));
+
+});
+
+$('#edit-tab').click(() => {
+    $('#edit-form').toggleClass('hide');
+    $('#edit-right').toggleClass('hide');
+    $('#edit-left').toggleClass('hide');
+});
+
+const populateEdit = (movieID) => {
+    fetch(`${URL}/${movieID}`)
+        .then(resp => resp.json())
+        .then(movie => {
+            $('#edit-title').val(movie.title);
+            $('#edit-rating').val(movie.rating);
+            $('#movie-id').val(movieID);
+        })
+        .catch(err => console.error(err));
+}
+// APPLY EDIT'S FUNCTION
+$('#edit-apply').click(function (e) {
+    e.preventDefault();
+    let title = $('#edit-title').val();
+    let rating = $('#edit-rating').val();
+    let id = $('#movie-id').val();
+    let editedMovie = {id, title, rating};
+    console.log(editedMovie);
+    editMovie(editedMovie);
+    setTimeout(function (){
+        location.reload();
+    },1500);
+});
+
+// PATCH REQUEST
+const editMovie = (movie) => {
+    let options = {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(movie)
+    }
+    return fetch(`${URL}/${movie.id}`, options).then(resp => resp.json()).then(displayMovies()).catch(err => console.error(err));
+}
+
 // *** DELETE FUNCTIONALITY ***
 function deleteMovie(id) {
     fetch(`${URL}/${id}`, {
@@ -86,58 +136,3 @@ let timeoutForDelete = setTimeout(function() {
 }, 1000);
 
 
-// *** EDIT FUNCTIONALITY ***
-$('#movies-list').html(html);
-$(document).on('click', '.edit-btn', function(e) {
-    e.preventDefault();
-    console.log("test");
-    var id = $(e.target).attr('id');
-    console.log(populateEdit(id));
-
-});
-
-$('#edit-tab').click(() => {
-    $('#edit-form').toggleClass('hide');
-    $('#edit-right').toggleClass('hide');
-    $('#edit-left').toggleClass('hide');
-});
-
-const populateEdit = (movieID) => {
-    // First, get the information for that movie ID
-    //    fetch(URL)
-    fetch(`${URL}/${movieID}`)
-        .then(resp => resp.json())
-        // Take the movie attributes and set the values within the edit form to match the value of each attribute
-        .then(movie => {
-            $('#edit-title').val(movie.title);
-            $('#edit-rating').val(movie.rating);
-            $('#movie-id').val(movieID);
-        })
-        .catch(err => console.error(err));
-}
-// FORM SUBMISSION: EDIT FUNCTION
-// On click of "Apply" Button, will create an object with the inputs on the edit form and send to the editMovie() function
-$('#edit-apply').click(function (e) {
-    e.preventDefault();
-    let title = $('#edit-title').val();
-    let rating = $('#edit-rating').val();
-    let id = $('#movie-id').val();
-    let editedMovie = {id, title, rating};
-    console.log(editedMovie);
-    editMovie(editedMovie);
-    setTimeout(function (){
-        location.reload();
-    },1500);
-});
-
-// PATCH REQUEST
-// Takes the movie from the Edit Form and uses PATCH to change the values of it's attributes in the JSON file
-const editMovie = (movie) => {
-    let options = {
-        method: 'PATCH',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(movie)
-    }
-    return fetch(`${URL}/${movie.id}`, options).then(resp => resp.json()).then(displayMovies()).catch(err => console.error(err));
-}
- // *** WORKING ON EDIT FUNCTIONALITY ***
