@@ -1,7 +1,13 @@
 "use strict";
 
 const URL = "https://beryl-chalk-crown.glitch.me/movies";
-
+setTimeout(() => {
+    $(".loader").css("display", "none");
+    element = document.querySelector("#table-container");
+    element.style.visibility = 'visible';
+    element = document.querySelector("#header-img");
+    element.style.visibility = 'visible';
+},1600);
 // *** RENDER MOVIES ***
 let html = '';
 const displayMovies = () => {
@@ -28,7 +34,9 @@ const displayMovies = () => {
             console.log(error);
         });
 }
-displayMovies();
+setTimeout(function (){
+    displayMovies();
+},3000);
 
 // *** POST FUNCTION ***
 $('#add-new-movie').click(function(e) {
